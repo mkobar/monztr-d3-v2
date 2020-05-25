@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../shared/api.service';
+import { ApiService } from '../../shared/api.service';
 declare let d3: any;
 
 @Component({
-  selector: 'app-tree-component',
-  templateUrl: './tree-component.component.html',
-  styleUrls: ['./tree-component.component.scss']
+  selector: 'app-tree-report',
+  templateUrl: './tree-report.component.html',
+  styleUrls: ['./tree-report.component.css']
 })
 
-export class TreeComponentComponent implements OnInit {
+export class TreeReportComponent implements OnInit {
   treeData: any
   margin = { top: 20, right: 120, bottom: 20, left: 120 };
   width = 1400 - this.margin.left - this.margin.right;

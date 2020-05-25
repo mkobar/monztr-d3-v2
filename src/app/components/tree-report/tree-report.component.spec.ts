@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeComponentComponent } from './tree-component.component';
+import { TreeReportComponent } from './tree-report.component';
 
-describe('TreeComponentComponent', () => {
-  let component: TreeComponentComponent;
-  let fixture: ComponentFixture<TreeComponentComponent>;
+describe('TreeReportComponent', () => {
+  let component: TreeReportComponent;
+  let fixture: ComponentFixture<TreeReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TreeComponentComponent ]
+      declarations: [ TreeReportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TreeComponentComponent);
+    fixture = TestBed.createComponent(TreeReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
