@@ -206,7 +206,19 @@ WebKit inertia scrolling is being added here for any present/future devices that
     /* flex: none;*/
     overflow: scroll;
     position: fixed;
-    transform: scale(1.35,1.35)
+    /** transform-origin: top right;**/
+    /**transform-origin: top right; **/
+   /**transform: translateX(-90px); **/
+
+    /* transform: scale(-1.35,1.35) */
+    /* -webkit Safari 5+, Chrome 10+ iOS 3.2+ Android 2.1+ Blackberry 7+ */
+    -webkit-transform: scale(1.10, 2.90) translateX(-195px);
+    /* -moz Firefox */
+    -moz-transform: translateX(-290px) scaleY(2.90);
+    /* -o Opera */
+    -o-transform: scale(1.10, 1.90) translateX(-195px);
+    transform: scale(1.10, 1.90) translateX(-195px);
+    /* transform: scale(1.25,1.35);*/
 }
 
 .Query2 {
