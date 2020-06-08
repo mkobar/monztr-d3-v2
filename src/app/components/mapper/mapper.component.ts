@@ -12,9 +12,13 @@ export class MapperComponent implements OnInit {
   treeData: any
   //margin = { top: 20, right: 120, bottom: 20, left: 120 };
   margin = { top: 20, right: 20, bottom: 20, left: 30 };
-  //width = 1400 - this.margin.left - this.margin.right;
-  width = 700 - this.margin.left - this.margin.right;
+  width = 1400 - this.margin.left - this.margin.right;
+  //width = 700 - this.margin.left - this.margin.right;
+  //width = 500 - this.margin.left - this.margin.right;
   //height = 800 - this.margin.top - this.margin.bottom;
+  //height = 600 - this.margin.top - this.margin.bottom;
+  //height = 400 - this.margin.top - this.margin.bottom;
+  //height = 300 - this.margin.top - this.margin.bottom;
   height = 250 - this.margin.top - this.margin.bottom;
   svg: any;
   root: any;
@@ -43,7 +47,7 @@ export class MapperComponent implements OnInit {
         + this.margin.left + "," + this.margin.top + ")");
     
     this.root = d3.hierarchy(this.treeData, function (d) { return d.children; });
-    this.root.x0 = this.height / 2;
+    this.root.x0 = this.height / 2; // in middle
     this.root.y0 = 0;
 
     if (this.isCollapse)
@@ -71,6 +75,9 @@ export class MapperComponent implements OnInit {
     let nodes = treeData.descendants();
     let links = treeData.descendants().slice(1);
 
+    //let sizeBetweenNodes = 270;
+    let sizeBetweenNodes = 270;
+
     nodes.forEach(function (d) { d.y = d.depth * 270 });
 
     let node = self.svg.selectAll('g.node')
@@ -93,10 +100,10 @@ export class MapperComponent implements OnInit {
 
     nodeEnter.append("svg:image")
     .attr("xlink:href", function (d) { return d.data.flag ? "assets/images/flagged-24.png" : null; })
-      .attr("x", -10)
-      .attr("y", -10)
-      .attr("height", 20)
-      .attr("width", 20)
+      .attr("x", -5)
+      .attr("y", -5)
+      .attr("height", 10)
+      .attr("width", 10)
       .style("cursor", "pointer")
       .on('click', function (d) { toggle(d); });
 
@@ -111,6 +118,7 @@ export class MapperComponent implements OnInit {
       .attr("dy", ".35em")
       .attr("id", function (d) { return 'text' + d.id; })
       .style("text-anchor", "start")
+      .style("font-size", "9px")
       .style("dominant-baseline", "alphabetic")
       .text(function (d) { return d.data.name; })
       .style("fill-opacity", 1e-6);
@@ -118,11 +126,13 @@ export class MapperComponent implements OnInit {
     nodeEnter.selectAll('text')
       .attr('x', function (d) {
         let circleWidth = self.getBox('circle' + d.id).getBBox().width;
-        let val = self.isCollapse ? -25 : 30;
+	//let val = self.isCollapse ? -25 : 30;
+	let val = self.isCollapse ? -25 : 30;
         return circleWidth + val;
       })
       .attr('y', function (d) {
-        let val = self.isCollapse ? -40 : 0;
+        //let val = self.isCollapse ? -40 : 0;
+        let val = self.isCollapse ? -21 : 0;
         return self.getBox('circle' + d.id).getBBox().height + val;
       });
 
@@ -131,9 +141,9 @@ export class MapperComponent implements OnInit {
         let isText = document.getElementById('text' + d.id).textContent;
         return (isText) ? self.getBox('text' + d.id).getBBox().width + 5 : 0;
       })
-      .attr('height', function (d) { return self.getBox('text' + d.id).getBBox().height + 5; })
-      .attr('x', function (d) { return self.getBox('text' + d.id).getBBox().x; })
-      .attr('y', function (d) { return self.getBox('text' + d.id).getBBox().y; });
+      .attr('height', function (d) { return self.getBox('text' + d.id).getBBox().height + 2; })
+      .attr('x', function (d) { return (self.getBox('text' + d.id).getBBox().x) - 2; })
+      .attr('y', function (d) { return (self.getBox('text' + d.id).getBBox().y); });
 
     let nodeUpdate = nodeEnter.merge(node);
 
@@ -148,12 +158,12 @@ export class MapperComponent implements OnInit {
         if (selected) {
           if (d.data.name == source.data.name) {
             if (d.visited) {
-	    return 26/2 // not selected?
+	    return 26/4 // not selected?
             }
-	    return 40/2  // selected
+	    return 40/4  // selected
           }
         }
-	return 26/2 // not selected
+	return 26/4 // not selected
       })
       .style("fill", (d) => {
         if (selected) {
