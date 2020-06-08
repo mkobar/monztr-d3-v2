@@ -18,8 +18,8 @@ export class MapperComponent implements OnInit {
   //height = 800 - this.margin.top - this.margin.bottom;
   //height = 600 - this.margin.top - this.margin.bottom;
   //height = 400 - this.margin.top - this.margin.bottom;
-  //height = 300 - this.margin.top - this.margin.bottom;
-  height = 250 - this.margin.top - this.margin.bottom;
+  height = 300 - this.margin.top - this.margin.bottom;
+  //height = 250 - this.margin.top - this.margin.bottom;
   svg: any;
   root: any;
   treemap = d3.tree().size([this.height, this.width]);

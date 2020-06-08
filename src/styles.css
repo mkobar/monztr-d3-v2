@@ -175,7 +175,7 @@ WebKit inertia scrolling is being added here for any present/future devices that
 
 .Map {
     display: flex;
-    height: 155px;
+    height: 255px;
     width: auto;
     margin: 5px;
     /*flex: none;*/
@@ -216,7 +216,7 @@ WebKit inertia scrolling is being added here for any present/future devices that
     /* -moz Firefox */
     -moz-transform: translateX(-290px) scaleY(2.90);
     /* -o Opera */
-    -o-transform: scale(1.10, 1.90) translateX(-195px);
+    -o-transform: translateX(-395px) scale(1.10, 1.70);
     transform: scale(1.10, 1.90) translateX(-195px);
     /* transform: scale(1.25,1.35);*/
 }
