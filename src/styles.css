@@ -184,8 +184,8 @@ WebKit inertia scrolling is being added here for any present/future devices that
 .Map2 {
     /* border: 3px blue;*/
     border: solid;
-    width: auto;
-    max-width: 90%;
+    /**width: auto; not needed? **/
+    /**max-width: 90%; not needed? **/
     /*position: relative;*/
     z-index: 999;
     /*margin: 1em 0;
